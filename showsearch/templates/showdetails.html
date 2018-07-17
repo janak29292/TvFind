@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block script %}
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+  google.charts.load('current', {'packages':['bar']});
+  google.charts.setOnLoadCallback(drawChart);
+
+  function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+      ['Season','Average Ratings'],
+      {% for a in det.season.all|dictsort:'name' %}
+      ['{{ a.name }}', {{ a.rating }}],
+      {% endfor %}
+    ]);
+
+    var options = {
+      chart: {
+        title: "Season's Ratings",
+        subtitle: 'Sales, Expenses, and Profit: 2014-2017',
+      }
+    };
+
+    var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+    chart.draw(data, google.charts.Bar.convertOptions(options));
+  }
+</script>
+<script type="text/javascript">
+  google.charts.load('current', {'packages':['corechart']});
+  google.charts.setOnLoadCallback(drawVisualization);
+
+  function drawVisualization() {
+    // Some raw data (not necessarily accurate)
+    var data = google.visualization.arrayToDataTable([
+     ['Month', '',''],
+     {% for a in det.season.all|dictsort:'name' %}
+     {% for b in a.episode.all|dictsort:'position' %}
+     ['{{ b.position }}',{{ b.rating }},      {{ b.rating }}],
+     {% endfor %}
+     {% endfor %}
+  ]);
+
+var options = {
+  title : "Ratings of each Episode",
+  vAxis: {title: 'Rating'},
+  hAxis: {title: 'Episodes'},
+  seriesType: 'scatter',
+  series: {1: {type: 'line'}}
+};
+
+var chart = new google.visualization.ComboChart(document.getElementById('chart_div1'));
+chart.draw(data, options);
+}
+</script>
+
+{% endblock %}
+{% block nav %}
+<p></p>
+<h1 align="center">{{ det }}</h1>
+<div id="chart_div1" style="width: 100%; height: 500px;"></div>
+<div class="container">
+  <div id="columnchart_material" style="width: 800px; height: 500px;"></div>
+  </div>
+{% endblock %}

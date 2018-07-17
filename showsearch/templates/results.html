@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block nav %}
+<div class="container">
+  <div class="search-container">
+    <form class="" method="post">
+      {% csrf_token %}
+      <p></p>
+      <input class="form-control" type="text" placeholder="TV Search.." name="search">
+      <p></p>
+      <button class="btn btn-success" type="submit"><i class="fa fa-search"></i></button>
+      <p></p>
+    </form>
+  </div>
+  {% if request.POST %}
+  Showing Results for <b><i>{{ title }}</i></b>:
+  <ul style="list-style: none;">
+    {% for l in list %}
+      <p></p>
+      <li><a href={% url 'showdetails' l.pk %}>{{ l }}</a><p></p> </li>
+    {% empty %}
+    <p></p>
+    No Results Found for {{ title }}!!!!
+    {% endfor %}
+  </ul>
+  {% endif %}
+</div>
+{% endblock %}
