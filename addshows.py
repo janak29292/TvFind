@@ -146,7 +146,6 @@ def showlist():
 
 if __name__ == '__main__':
     list=showlist()
-    list=list[-1:290:-1][::-1]
     for text in list:
         try:
             ep,tvs = lookup(text)
