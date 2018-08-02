@@ -1,4 +1,9 @@
 {% extends "base.html" %}
 {% block nav %}
-
+<div class="container">
+  <p></p>
+  <a href={% url 'shows' %}><button class="btn btn-primary" type="button" name="button">list of all Shows</button></a>
+  <p></p>
+  <a href={% url 'search' %}><button class="btn btn-primary" type="button" name="button">Search tv shows</button></a>
+</div>
 {% endblock %}

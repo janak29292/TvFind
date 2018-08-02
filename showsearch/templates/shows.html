@@ -3,13 +3,13 @@
 <div class="container">
   <div id="accordion">
     <div class="card">
+      <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapsenum" aria-expanded="false" aria-controls="collapsenum">
       <div class="card-header" id="headingnum">
         <h5 class="mb-0">
-          <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapsenum" aria-expanded="false" aria-controls="collapsenum">
             #
-          </button>
         </h5>
       </div>
+      </button>
       <div id="collapsenum" class="collapse" aria-labelledby="headingnum" data-parent="#accordion">
         <div class="card-body">
           <ul style="list-style: none;">
@@ -23,13 +23,13 @@
       </div>
     </div>
     <div class="card">
+      <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwoand" aria-expanded="false" aria-controls="collapseTwoand">
       <div class="card-header" id="headingTwoand">
         <h5 class="mb-0">
-          <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwoand" aria-expanded="false" aria-controls="collapseTwoand">
             &
-          </button>
         </h5>
       </div>
+      </button>
       <div id="collapseTwoand" class="collapse" aria-labelledby="headingTwoand" data-parent="#accordion">
         <div class="card-body">
           <ul style="list-style: none;">
@@ -46,13 +46,13 @@
     </div>
     {% for a in abets %}
     <div class="card">
+      <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo{{ a }}" aria-expanded="false" aria-controls="collapseTwo{{ a }}">
       <div class="card-header" id="headingTwo{{ a }}">
         <h5 class="mb-0">
-          <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo{{ a }}" aria-expanded="false" aria-controls="collapseTwo{{ a }}">
             {{ a }}
-          </button>
         </h5>
       </div>
+      </button>
       <div id="collapseTwo{{ a }}" class="collapse" aria-labelledby="headingTwo{{ a }}" data-parent="#accordion">
         <div class="card-body">
           <ul style="list-style: none;">
